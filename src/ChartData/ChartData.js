@@ -1,6 +1,6 @@
 import React from 'react'
 import {Alert, StyleSheet, ScrollView, View, Text, Button, TouchableHighlight} from 'react-native'
-import he from 'he'
+import he from '../utils/he'
 
 class ChartData extends React.Component {
   constructor (props) {
@@ -20,31 +20,31 @@ class ChartData extends React.Component {
           <View><Text style={styles.title}>General</Text></View>
           {(typeof this.props.chartData.charts.General === 'object') ? this.props.chartData.charts.General.map((chart, i) => {
             return (
-              <TouchableHighlight style={{paddingBottom: 10}} onPress={() => this.props.handleDisplayChart(chart.proxy)} key={i}><Text>{he.decode(chart.chartname)}</Text></TouchableHighlight>
+              <TouchableHighlight style={{paddingBottom: 10}} onPress={() => this.props.handleDisplayChart(chart.proxy)} key={i}><Text style={styles.btn}>{he.decode(chart.chartname)}</Text></TouchableHighlight>
             )
           }) : <Text>No charts available</Text> }
           <View><Text style={styles.title}>SIDs</Text></View>
           {(typeof this.props.chartData.charts.SID === 'object') ? this.props.chartData.charts.SID.map((chart, i) => {
             return (
-              <TouchableHighlight style={{paddingBottom: 10}} onPress={() => this.props.handleDisplayChart(chart.proxy)} key={i}><Text>{he.decode(chart.chartname)}</Text></TouchableHighlight>
+              <TouchableHighlight style={{paddingBottom: 10}} onPress={() => this.props.handleDisplayChart(chart.proxy)} key={i}><Text style={styles.btn}>{he.decode(chart.chartname)}</Text></TouchableHighlight>
             )
           }) : <Text>No charts available</Text> }
           <View><Text style={styles.title}>STARs</Text></View>
           {(typeof this.props.chartData.charts.STAR === 'object') ? this.props.chartData.charts.STAR.map((chart, i) => {
             return (
-              <TouchableHighlight style={{paddingBottom: 10}} onPress={() => this.props.handleDisplayChart(chart.proxy)} key={i}><Text>{he.decode(chart.chartname)}</Text></TouchableHighlight>
+              <TouchableHighlight style={{paddingBottom: 10}} onPress={() => this.props.handleDisplayChart(chart.proxy)} key={i}><Text style={styles.btn}>{he.decode(chart.chartname)}</Text></TouchableHighlight>
             )
           }) : <Text>No charts available</Text> }
           <View><Text style={styles.title}>Intermediate</Text></View>
           {(typeof this.props.chartData.charts.Intermediate === 'object') ? this.props.chartData.charts.Intermediate.map((chart, i) => {
             return (
-              <TouchableHighlight style={{paddingBottom: 10}} onPress={() => this.props.handleDisplayChart(chart.proxy)} key={i}><Text>{he.decode(chart.chartname)}</Text></TouchableHighlight>
+              <TouchableHighlight style={{paddingBottom: 10}} onPress={() => this.props.handleDisplayChart(chart.proxy)} key={i}><Text style={styles.btn}>{he.decode(chart.chartname)}</Text></TouchableHighlight>
             )
           }) : <Text>No charts available</Text> }
           <View><Text style={styles.title}>Approaches</Text></View>
           {(typeof this.props.chartData.charts.Approach === 'object') ? this.props.chartData.charts.Approach.map((chart, i) => {
             return (
-              <TouchableHighlight style={{paddingBottom: 10}} onPress={() => this.props.handleDisplayChart(chart.proxy)} key={i}><Text>{he.decode(chart.chartname)}</Text></TouchableHighlight>
+              <TouchableHighlight style={{paddingBottom: 10}} onPress={() => this.props.handleDisplayChart(chart.proxy)} key={i}><Text style={styles.btn}>{he.decode(chart.chartname)}</Text></TouchableHighlight>
             )
           }) : <Text>No charts available</Text> }
         </ScrollView>
@@ -61,7 +61,13 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     color: '#2196F3',
-    fontSize: 14
+    fontSize: 25
+  },
+  btn: {
+    padding: 5,
+    width: '100%',
+    backgroundColor: '#2196F3',
+    color: '#ffffff'
   }
 })
 

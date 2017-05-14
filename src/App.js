@@ -33,20 +33,21 @@ export default class App extends React.Component {
     this.handleData = this.handleData.bind(this)
   }
 
-  handleSearchSubmit () {
-    if (this.state.search.length < 3) {
+  handleSearchSubmit (search = '') {
+    if (search.length < 3) {
       Alert.alert(
             'Error',
-            `Not enough characters in search query`,
+            `Not enough characters in search query` + 'Length ' + search.length + ' and state ' + search,
             [{text: 'OK' }]
           )
       return false
     }
     this.setState({
-      submitted: this.state.search,
+      submitted: search,
       isFetching: true
     })
-    api.searchChart(this.state.search).then((response) => {
+    console.log(this.state.submitted + ' vs ' + search)
+    api.searchChart(search).then((response) => {
       this.handleData(response)
       this.setState({isFetching: false})
     }).catch((error) => {
